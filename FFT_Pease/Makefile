@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 INC := -I${CUDA_HOME}/include
 LIB := -L${CUDA_HOME}/lib64 -lcudart -lcufft -lcuda
 
@@ -23,7 +22,7 @@ all: clean executable
 
 
 executable: FFT.o FFT-maxwell-32bit-Pease.o Makefile
-	$(NVCC) -o $(EXECUTABLE) FFT-maxwell-32bit-Pease.o FFT.o $(LIB) $(NVCCFLAGS) 
+	$(NVCC) -o $(EXECUTABLE) FFT-maxwell-32bit-Pease.o FFT.o $(LIB) $(NVCCFLAGS)
 
 FFT-maxwell-32bit-Pease.o: timer.h utils_cuda.h utils_file.h
 	$(NVCC) -c FFT-maxwell-32bit-Pease.cu $(NVCCFLAGS)
@@ -31,10 +30,10 @@ FFT-maxwell-32bit-Pease.o: timer.h utils_cuda.h utils_file.h
 FFT.o: FFT.c
 	$(GCC) -c FFT.c $(GCC_OPTS)
 
-reference.o: reference.c 
+reference.o: reference.c
 	$(GCC) -c reference.c $(GCC_OPTS) $(INC) -lfftw3
 
-clean:	
+clean:
 	rm -f *.o *.~ $(EXECUTABLE)
 
 
